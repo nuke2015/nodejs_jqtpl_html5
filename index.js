@@ -1,4 +1,4 @@
-require('./config');//引入函数库;
+require('./core/config');//引入函数库;
 var express = require('express');
 
 var app = module.exports = express();
