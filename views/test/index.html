@@ -1,0 +1,29 @@
+<h2>顶部bannner</h2>
+{{each banner.data}}
+<li>标题${$value.title},图片${$value.image},链接${$value.link}</li>
+{{/each}}
+<h2>分类</h2>
+{{each category.data}}
+<li>id${$value.id},文字${$value.text},图片${$value.image}</li>
+{{/each}}
+<h3>模块列表</h3>
+<ul>
+    {{each data[0].data}}
+    <li>id${$value.id},标题${$value.title},图片${$value.image},描述${$value.description}</li>
+    {{/each}}
+</ul>
+<ul>
+    {{each data[1].data}}
+    <li>id${$value.id},标题${$value.title},图片${$value.image},描述${$value.description}</li>
+    {{/each}}
+</ul>
+<ul>
+    {{each data[2].data}}
+    <li>id${$value.id},标题${$value.title},图片${$value.image},描述${$value.description}</li>
+    {{/each}}
+</ul>
+<ul>
+    {{each data[3].data}}
+    <li>id${$value.id},标题${$value.title},图片${$value.image},描述${$value.description}</li>
+    {{/each}}
+</ul>

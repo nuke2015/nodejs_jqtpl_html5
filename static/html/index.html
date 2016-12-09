@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>家家月嫂</title>
+    <script type="text/javascript">
+        if(/Android (\d+\.\d+)/.test(navigator.userAgent)){
+            var version = parseFloat(RegExp.$1);
+            if(version>2.3){
+                var phoneScale = parseInt(window.screen.width)/750;
+                document.write('<meta name="viewport" content="width=750, minimum-scale = '+ phoneScale +', maximum-scale = '+ phoneScale +', target-densitydpi=device-dpi">');
+            }else{
+                document.write('<meta name="viewport" content="width=750, target-densitydpi=device-dpi">');
+            }
+        }else{
+            document.write('<meta name="viewport" content="width=750, user-scalable=no, target-densitydpi=device-dpi">');
+        }
+    </script>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/swiper-3.3.1.min.css">
+    <!--<link rel="stylesheet" href="/css/zepto.mdatetimer.css">-->
+    <link href="/css/mobiscroll_date.css" rel="stylesheet" />
+    <link rel="stylesheet" href="/js/plugs/spinningwheel-didi.css"/>
+    <style>
+        .weui_loading_toast {
+            display: none;
+        }
+        .mask-ctn{
+            position: fixed;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<!--<input style="position: absolute;z-index: 10;color:#fff;text-align: right;width:100%;height:90px;border:0px;background:rgba(0, 0, 0, 0);background:none;" type="text" id="picktime" value="2016-07-01" readonly>-->
+
+
+<!--<input style="position: absolute;z-index: 10;color:#fff;text-align: right;width:100%;height:90px;border:0px;background:rgba(0, 0, 0, 0);background:none;" type="text" name="USER_AGE" id="USER_AGE" readonly  />-->
+
+
+    <section class="wrapper">
+        <!--预产预定-->
+        <section class="register oh">
+            <div class="icon-2 fl"> <img src="../images/icon_2.png" alt=""></div>
+            <div class="fl tab-area tab-bg js-birth-ctn ">设置宝宝预产期,抢先一步锁定优质月嫂</div>
+           <!--  <div class="icon-3 fr"> <img src="../images/icon_3.png" alt=""></div> -->
+        </section>
+        <!--banner条-->
+        <section class="jm-banner">
+            <div class="swiper-container">
+                <div class="swiper-wrapper js-swiper-ctn">
+                    <!--<div class="swiper-slide"><a href="javascript:void(0)"><img src="../images/banner_0.jpg" alt=""></a></div>-->
+                    <!--<div class="swiper-slide"><a href="javascript:void(0)"><img src="../images/banner_0.jpg" alt=""></a></div>-->
+                    <!--<div class="swiper-slide"><a href="javascript:void(0)"><img src="../images/banner_0.jpg" alt=""></a></div>-->
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </section>
+
+        <section class="service oh">
+            <!--住家月子服务-->
+            <section class="jm-service1 oh">
+                <div class="title">住家月子服务</div>
+                <!-- <div class="specialAd js-specialAd">新手体验，立减800</div> -->
+                <div class="part1 js-service-ctn mbs ">
+                        <img src="../images/0.jpg" alt="" width="690">   
+                </div>
+                
+                <div class="tiyan"><img src="../images/icon_0.png"   width="18" alt="">226人体验</div>
+                
+                <div class="part2 js-home-ctn mts" style="margin-top:15px;">
+
+                </div>
+            </section>
+            <!--住院月子服务-->
+            <section class="jm-service1 oh">
+                <div class="title">住院月子服务</div>
+                <div class="part2 js-hospital-ctn" >
+                </div>
+            </section>
+
+            <!--服务保障-->
+            <section class="oh ser">
+                <p>服务保障</p>
+                <div><img src="../img/index001.png" alt=""/></div>
+            </section>
+
+            <!--服务流程-->
+            <section class="oh ser">
+                <p>服务流程</p>
+                <div><img src="../img/index002.png" alt=""/></div>
+            </section>
+        </section>
+
+    </section>
+
+    <script id="swipebody" type="text/html" nowith="yes">
+        <%
+            for(var i=0;i<banner.length;i++ ){
+                var item = banner[i];
+        %>
+            <div class="swiper-slide js-link-bytype"  data-item='<%=json2stringify(item)%>'><a href="javascript:void(0)"><img src="<%=item.image%>" alt=""></a></div>
+        <%}
+        %>
+    </script>
+
+    <script id="hospitalservicebody" type="text/html" nowith="yes">
+        <%
+        for(var i=0;i<hospital.length;i++ ){
+            var item = hospital[i];
+            var float = "fl";
+            if(i%2!=0){
+                float = "fr";
+            }
+        %>
+            <div class="ad <%=float%> js-link2yslist-item"  day="<%=item.day%>" style = "margin-top: 0;" data-item='<%=json2stringify(item)%>'>
+                <img src="<%=item.image%>" alt="" width="330">
+                <div class="text">
+                    <%=item.day%>天 | <%=item.price%>元
+                </div>
+                <div class="subText">
+                    <div class="fl"><img src="../images/icon_0.png"   width="18" alt=""></div>
+                    <div class="fl"><%=item.exp_count%></div>
+                    <div  class="through fr">原价:<%=item.price_market%>元</div>
+                </div>
+            </div>
+        <%}
+        %>
+    </script>
+
+    <script id="homeservicebody" type="text/html" nowith="yes">
+        <%
+        for(var i=0;i<home.length;i++ ){
+        var item = home[i];
+        var float = "fl";
+        if(i%2!=0){
+        float = "fr";
+        }
+        %>
+        <div class="ad <%=float%> js-link2yslist-item"  day="<%=item.day%>" style = "margin-top: 0;" data-item='<%=json2stringify(item)%>'>
+            <img src="<%=item.image%>" alt="" width="330">
+            <div class="text">
+                <%=item.day%>天 | <%=item.price%>元
+            </div>
+            <div class="subText">
+                <div class="fl"><img src="../images/icon_0.png"   width="18" alt=""></div>
+                <div class="fl"><%=item.exp_count%></div>
+                <div  class="through fr">原价:<%=item.price_market%>元</div>
+            </div>
+        </div>
+        <%}
+        %>
+    </script>
+
+    <script id="servicebody" type="text/html" nowith="yes">
+        <%
+        for(var i=0;i<service.length;i++ ){
+            var item = service[i];
+        %>
+        <img src="<%=item.image%>" class="js-link2yslist-item" alt="" data-item='<%=json2stringify(item)%>' width="690">
+
+        <%}%>
+    </script>
+
+    <script src="/js/lib/jquery-2.1.1.min.js"></script>
+    <!--<script src="/js/lib/zepto.min.js"></script>-->
+
+    <script src="/js/lib/fastclick.js"></script>
+    <script src="/js/utils/template.js"></script>
+    <script src="/js/utils/utils.js"></script>
+    <script src="/js/plugs/spinningwheel.js"></script>
+    <script src="/js/lib/swiper-3.3.1.jquery.min.js"></script>
+<!--<script src="/js/lib/zepto.mdatetimer.js"></script>-->
+<script src="/js/lib/mobiscroll_date.js" charset="gb2312"></script>
+<script src="/js/lib/mobiscroll.js"></script>
+<script src="/js/busi/index.js"></script>
+
+
+
+
+    <script type="text/javascript">
+        helper.setTitle("滴滴月嫂");
+        $(function () {
+
+            api.getYuesaoHome({"methodName":"YuesaoHome","version":"2.0","user_id":"xx"});
+            //进度
+            if(helper.isLogin()){
+                api.getUserInfo({"methodName":"UserInfo","version":"2.0"});
+            }
+            
+            /*****选择日期***/
+            $(".js-birth-ctn").bind("click", function () {
+                if(!helper.isLogin()){helper.gotoLogin();return;}
+                BirthDay.openBirthDate();
+                //alert('hello birthday');
+                $("#sw-wrapper").css("display", "none");
+                //$(".js-choose-birth").removeClass("hide");
+                var s = 0;
+                if (helper.isAndroid()) {
+                    s = 100;
+                }
+                setTimeout(function () {
+                    $(".js-mask").css("display", "block");
+                    $("#sw-wrapper").css("display", "block");
+                }, s);
+            });
+
+        });
+
+
+
+    </script>
+<div class="mask-ctn js-mask"></div>
+
+</body>
+</html>

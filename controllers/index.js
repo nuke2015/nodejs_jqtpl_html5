@@ -1,12 +1,14 @@
 exports.index = function(req, res) {
-    var param = {
-        methodName: 'HomeIndex',
-        version: '4.0'
-    };
-    dump(param);
-    sendpost(param, function(err, data, body) {
-        json = JSON.parse(body);
-        dump(json.data);
-        res.render("index", json.data);
-    });
+    res.redirect('/html');
 };
+// 权限网关
+exports.token = function(req, res) {
+    var query=req.query;
+    if (query.echostr) {
+        res.render("token", {
+            echostr: query.echostr
+        });
+    } else {
+        res.render("token", {});
+    }
+}
